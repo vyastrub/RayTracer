@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="RTv1"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/vyastrub/grysha/RTv1/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/vyastrub/grysha/RTv1/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/vyastrub/grysha/RTv1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/vyastrub/grysha/RTv1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/vyastrub/grysha/RTv1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/vyastrub/grysha/RTv1/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/vyastrub/grysha/RTv1/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/vyastrub/grysha/RTv1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/vyastrub/grysha/RTv1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/vyastrub/grysha/RTv1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/vyastrub/grysha/RTv1/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/vyastrub/grysha/RTv1/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/vyastrub/grysha/RTv1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/vyastrub/grysha/RTv1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/vyastrub/grysha/RTv1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="RTv1">
+				<Option output="/Users/vyastrub/grysha/RTv1/cmake-build-debug/RTv1" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/vyastrub/grysha/RTv1/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/vyastrub/grysha/RTv1/cmake-build-debug/Makefile&quot;  VERBOSE=1 RTv1"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/vyastrub/grysha/RTv1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/vyastrub/grysha/RTv1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/vyastrub/grysha/RTv1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="RTv1/fast">
+				<Option output="/Users/vyastrub/grysha/RTv1/cmake-build-debug/RTv1" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/vyastrub/grysha/RTv1/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/vyastrub/grysha/RTv1/cmake-build-debug/Makefile&quot;  VERBOSE=1 RTv1/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/vyastrub/grysha/RTv1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/vyastrub/grysha/RTv1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/vyastrub/grysha/RTv1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/vyastrub/grysha/RTv1/camera.c">
+			<Option target="RTv1"/>
+		</Unit>
+		<Unit filename="/Users/vyastrub/grysha/RTv1/color.c">
+			<Option target="RTv1"/>
+		</Unit>
+		<Unit filename="/Users/vyastrub/grysha/RTv1/cylinder_cone.c">
+			<Option target="RTv1"/>
+		</Unit>
+		<Unit filename="/Users/vyastrub/grysha/RTv1/extra.c">
+			<Option target="RTv1"/>
+		</Unit>
+		<Unit filename="/Users/vyastrub/grysha/RTv1/hyperboloid.c">
+			<Option target="RTv1"/>
+		</Unit>
+		<Unit filename="/Users/vyastrub/grysha/RTv1/ini.h">
+			<Option target="RTv1"/>
+		</Unit>
+		<Unit filename="/Users/vyastrub/grysha/RTv1/intersections.c">
+			<Option target="RTv1"/>
+		</Unit>
+		<Unit filename="/Users/vyastrub/grysha/RTv1/libft/ft_atoi.c">
+			<Option target="RTv1"/>
+		</Unit>
+		<Unit filename="/Users/vyastrub/grysha/RTv1/libft/ft_bzero.c">
+			<Option target="RTv1"/>
+		</Unit>
+		<Unit filename="/Users/vyastrub/grysha/RTv1/libft/ft_memalloc.c">
+			<Option target="RTv1"/>
+		</Unit>
+		<Unit filename="/Users/vyastrub/grysha/RTv1/libft/ft_memcpy.c">
+			<Option target="RTv1"/>
+		</Unit>
+		<Unit filename="/Users/vyastrub/grysha/RTv1/libft/ft_memset.c">
+			<Option target="RTv1"/>
+		</Unit>
+		<Unit filename="/Users/vyastrub/grysha/RTv1/libft/ft_putchar.c">
+			<Option target="RTv1"/>
+		</Unit>
+		<Unit filename="/Users/vyastrub/grysha/RTv1/libft/ft_putstr.c">
+			<Option target="RTv1"/>
+		</Unit>
+		<Unit filename="/Users/vyastrub/grysha/RTv1/libft/ft_strcmp.c">
+			<Option target="RTv1"/>
+		</Unit>
+		<Unit filename="/Users/vyastrub/grysha/RTv1/libft/ft_strdup.c">
+			<Option target="RTv1"/>
+		</Unit>
+		<Unit filename="/Users/vyastrub/grysha/RTv1/libft/ft_strjoin.c">
+			<Option target="RTv1"/>
+		</Unit>
+		<Unit filename="/Users/vyastrub/grysha/RTv1/libft/ft_strlen.c">
+			<Option target="RTv1"/>
+		</Unit>
+		<Unit filename="/Users/vyastrub/grysha/RTv1/libft/ft_strnew.c">
+			<Option target="RTv1"/>
+		</Unit>
+		<Unit filename="/Users/vyastrub/grysha/RTv1/main.c">
+			<Option target="RTv1"/>
+		</Unit>
+		<Unit filename="/Users/vyastrub/grysha/RTv1/mtx_op.c">
+			<Option target="RTv1"/>
+		</Unit>
+		<Unit filename="/Users/vyastrub/grysha/RTv1/operations.c">
+			<Option target="RTv1"/>
+		</Unit>
+		<Unit filename="/Users/vyastrub/grysha/RTv1/parsing.c">
+			<Option target="RTv1"/>
+		</Unit>
+		<Unit filename="/Users/vyastrub/grysha/RTv1/polynomials.c">
+			<Option target="RTv1"/>
+		</Unit>
+		<Unit filename="/Users/vyastrub/grysha/RTv1/raytracing.c">
+			<Option target="RTv1"/>
+		</Unit>
+		<Unit filename="/Users/vyastrub/grysha/RTv1/recurtion.c">
+			<Option target="RTv1"/>
+		</Unit>
+		<Unit filename="/Users/vyastrub/grysha/RTv1/scene.c">
+			<Option target="RTv1"/>
+		</Unit>
+		<Unit filename="/Users/vyastrub/grysha/RTv1/test.ini">
+			<Option target="RTv1"/>
+		</Unit>
+		<Unit filename="/Users/vyastrub/grysha/RTv1/tools.c">
+			<Option target="RTv1"/>
+		</Unit>
+		<Unit filename="/Users/vyastrub/grysha/RTv1/tortus.c">
+			<Option target="RTv1"/>
+		</Unit>
+		<Unit filename="/Users/vyastrub/grysha/RTv1/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
