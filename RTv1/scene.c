@@ -44,6 +44,7 @@ void		init(t_arr *gl)
 			gl->cur[j][i]->i = 0;
 			gl->cur[j][i]->id = j;
 			gl->cur[j][i]->flag = 0;
+            gl->cur[j][i]->cap = 0;
 			gl->cur[j][i]->col = (t_col*)malloc(sizeof(t_col));
     	    set_col(gl->cur[j][i]->col, 0, 0, 0);
 		}

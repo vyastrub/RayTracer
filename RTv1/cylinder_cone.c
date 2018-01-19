@@ -79,7 +79,7 @@ void		limit_obj(t_arr *gl, t_ray *ray, t_obj *obj, int i)
                 gl->t2[i] > 0) || (gl->t[i] < 0 && gl->t2[i] > 0))
 		{
 			gl->t[i] = gl->t2[i];
-			obj->normal = normal_spr_pln;
+            gl->cur[i][gl->iter[i]]->cap = 1;
 		}
 	}
 }
@@ -95,7 +95,6 @@ int			cylin_inter(t_arr *gl, t_ray *ray, t_obj *box, int thread)
     a[1] = 2 * (dot(ray->dir, &oc) - dot(ray->dir, box->v) *
 		dot(&oc, box->v));
     a[2] = dot(&oc, &oc) - pow(dot(&oc, box->v), 2) - (box->r * box->r);
-	box->normal = normal_con_cyl;
 	if (box->h > 0 && disc(gl, a, thread) > 0)
 	{
 		limit_obj(gl, ray, box, thread);
@@ -116,7 +115,6 @@ int			conus_inter(t_arr *gl, t_ray *ray, t_obj *con, int thread)
     a[1] = 2 * (dot(ray->dir, &oc) - (1 + (con->k * con->k)) *
 		dot(ray->dir, con->v) * dot(&oc, con->v));
     a[2] = dot(&oc, &oc) - (1 + con->k * con->k) * pow(dot(&oc, con->v), 2);
-	con->normal = normal_con_cyl;
 	if (con->h > 0 && disc(gl, a, thread) > 0)
 	{
 		limit_obj(gl, ray, con, thread);

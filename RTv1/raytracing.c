@@ -25,6 +25,10 @@ static void	setDistance(t_arr *gl, t_current *current, t_obj *obj)
 	current->i = obj->index;
 	current->mirror = obj->reflection;
 	current->ref_c = obj->refraction;
+    current->normal = obj->normal;
+    if (current->cap)
+        current->normal = normal_spr_pln;
+    current->cap = 0;
 }
 
 void detection(t_arr *gl, t_ray *ray, t_current **cur, int ind)
@@ -58,6 +62,7 @@ void	render(t_arr *gl, t_current *cur, t_lsrc *src)
 
     tmp = mul(&cur->n, BIAS, 1);
     tmp = add(&cur->p, &tmp, 1);
+    //tmp = add(&cur->p, &cur->n, 1);
 	create_v(cur->bck->org, tmp.x, tmp.y, tmp.z);
 	tmp = add(src->lgt, &cur->p, 2);
 	dist = sqrt(dot(&tmp, &tmp));
@@ -132,15 +137,10 @@ void		make_pthreads(t_arr *gl)
         threadData[k].id = k;
         threadData[k].cur = gl->cur[k];
 	    pthread_create(&(threads[k]), NULL, raytrace, &threadData[k]);
-	    //pthread_join(threads[k], NULL);
 	}
-//    pthread_join(threads[0], NULL);
-//    pthread_join(threads[1], NULL);
-//    pthread_join(threads[2], NULL);
-//    pthread_join(threads[3], NULL);
-     for(k = 0; k < THREADS; k++)//ожидаем выполнение всех потоков
-         pthread_join(threads[k], NULL);
+	k = -1;
+    while (++k < THREADS)//ожидаем выполнение всех потоков
+		pthread_join(threads[k], NULL);
 	free(threads);//освобождаем память
 	free(threadData);
-    //
 }

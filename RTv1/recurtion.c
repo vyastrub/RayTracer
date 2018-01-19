@@ -18,7 +18,7 @@ static void	recurtion(t_arr *gl, t_current *src, t_current *cur, int i)
 
     cur->p = mul(cur->ray->dir, cur->dt, 1);
     cur->p = add(cur->ray->org, &cur->p, 1);
-    cur->obj->normal(cur);
+    cur->normal(cur);
     if (cur->mirror && gl->iter[cur->id] < DEPTH)
     {
         reflecting(gl, gl->cur[cur->id], ++(gl->iter[cur->id]));
@@ -51,7 +51,7 @@ void refracting(t_arr *gl, t_current *src, t_current *cur, int i)
 	n = src->n1 / src->n2;
 	c1 = dot(src->ray->dir, &src->n);
     c2 = sqrt(1 - pow(n, 2) * (1 - pow(c1, 2)));
-    tmp = mul(&src->n, BIAS, 1);
+    tmp = mul(&src->n, (src->n1 < src->n2 ? -BIAS : BIAS), 1);
     tmp = add(&src->p, &tmp, 1);
     create_v(cur->ray->org, tmp.x, tmp.y, tmp.z);
     tmp = mul(src->ray->dir, n, 1);
@@ -69,7 +69,12 @@ void refracting(t_arr *gl, t_current *src, t_current *cur, int i)
 
 void		reflecting(t_arr *gl, t_current **cur, int i)
 {
-	create_v(cur[i]->ray->org, cur[i - 1]->p.x, cur[i - 1]->p.y, cur[i - 1]->p.z);
+    t_vec tmp;
+
+    tmp = mul(&cur[i - 1]->n, BIAS, 1);
+    tmp = add(&cur[i - 1]->p, &tmp, 1);
+	create_v(cur[i]->ray->org, tmp.x, tmp.y, tmp.z);
+    //create_v(cur[i]->ray->org, cur[i - 1]->p.x, cur[i - 1]->p.y, cur[i - 1]->p.z);
     write_mul(cur[i]->ray->dir, &(cur[i - 1]->n), 2 * dot(cur[i - 1]->ray->dir, &(cur[i - 1]->n)));
     write_sub(cur[i]->ray->dir, cur[i - 1]->ray->dir, cur[i]->ray->dir);
 	norm(cur[i]->ray->dir);
@@ -88,14 +93,14 @@ void        universal(t_arr *gl, t_current **cur, int i)
 
 	cur[i]->p = mul(cur[i]->ray->dir, cur[i]->dt, 1);
 	cur[i]->p = add(cur[i]->ray->org, &cur[i]->p, 1);
-	cur[i]->obj->normal(cur[i]);
+	cur[i]->normal(cur[i]);
 	if (cur[i]->mirror && gl->iter[cur[i]->id] < DEPTH)
 	{
 		reflecting(gl, cur, ++(gl->iter[cur[i]->id]));
 		j = -1;
 		while (++j < gl->lights)
 			render(gl, cur[0], gl->src[cur[i]->id][j]);
-		//if (i != 0)
+		if (i != 0)
 			getcol(gl, cur[gl->iter[cur[i]->id]]->col, cur[i]);
 	}
 	else if (cur[i]->ref_c > 1.0 && gl->iter[cur[i]->id] + 1 < DEPTH)

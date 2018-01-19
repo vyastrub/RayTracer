@@ -27,10 +27,10 @@
 # define H 1000
 # define DEPTH 7
 # define AIR 1
-# define BIAS 0.000005
+# define BIAS 0.00001
 # define BCKG 0x000000
 # define AMBI 0.0001
-# define THREADS 1024
+# define THREADS 16
 
 
 typedef	struct	s_vec
@@ -102,7 +102,6 @@ typedef struct	s_obj // структура обьекта
 	double		r2;				//radius of torus 	
 	double		k;				//angle (conus)
 	double		h;
-
 	int 		cap;
 	double		specular;		//glossy - 1.0; mate 0.0;
 	double		diffuse;		//unused !!!!!!!!!!!!!!!!!!!!!!!!!!!!  
@@ -129,10 +128,12 @@ typedef struct	s_current //структура текущих параметро�
 	int			i;
     int			id;
 	int 		mirror;
+	int 		cap;
 	t_vec		p;
 	t_vec		n;
 	t_ray		*ray;
 	t_ray		*bck;
+	void		(*normal)();
 
 }				t_current;
 
