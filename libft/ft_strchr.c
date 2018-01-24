@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggrybova <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vyastrub <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/25 13:09:03 by ggrybova          #+#    #+#             */
-/*   Updated: 2017/08/21 16:03:57 by ggrybova         ###   ########.fr       */
+/*   Created: 2016/10/31 19:02:45 by vyastrub          #+#    #+#             */
+/*   Updated: 2016/12/01 09:40:58 by vyastrub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
 char	*ft_strchr(const char *s, int c)
 {
-	char *a;
+	int i;
 
-	a = (char*)s;
+	i = -1;
+	while (s[++i])
+		if (s[i] == c)
+			return ((char*)&s[i]);
 	if (c == '\0')
-	{
-		while (*a != '\0')
-			a++;
-		return (a++);
-	}
-	while (*a)
-	{
-		if (*a == c)
-			return (a++);
-		a++;
-	}
-	return (NULL);
+		return ((char*)&s[i]);
+	return (0);
 }

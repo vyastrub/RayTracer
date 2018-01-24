@@ -3,66 +3,77 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggrybova <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vyastrub <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/09 15:23:33 by ggrybova          #+#    #+#             */
-/*   Updated: 2016/12/11 16:49:52 by ggrybova         ###   ########.fr       */
+/*   Created: 2016/12/06 09:58:09 by vyastrub          #+#    #+#             */
+/*   Updated: 2016/12/06 15:30:33 by vyastrub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
-static	char	*ft_pozitiv_itoa(int n)
+static int	count(int n)
 {
-	int		i;
-	int		num;
-	char	*str;
+	int i;
 
 	i = 0;
-	num = n;
-	while (n > 0 && ++i > 0)
-		n = n / 10;
-	if (!(str = (char *)malloc(i + 1)))
-		return (NULL);
-	str[i] = '\0';
-	while (num > 0)
-	{
-		str[--i] = num % 10 + '0';
-		num = num / 10;
-	}
-	return (str);
-}
-
-static	char	*ft_negativ_itoa(int n)
-{
-	int		i;
-	int		num;
-	char	*str;
-
-	i = 1;
-	n = n * -1;
-	num = n;
-	while (n > 0 && ++i > 0)
-		n = n / 10;
-	if (!(str = (char *)malloc(i + 1)))
-		return (NULL);
-	str[i] = '\0';
-	while (num > 0)
-	{
-		str[--i] = num % 10 + '0';
-		num = num / 10;
-	}
-	str[--i] = '-';
-	return (str);
-}
-
-char			*ft_itoa(int n)
-{
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
-	if (n == 0)
-		return (ft_strdup("0"));
 	if (n < 0)
-		return (ft_negativ_itoa(n));
-	return (ft_pozitiv_itoa(n));
+	{
+		n = -n;
+		i++;
+	}
+	while (n > 0)
+	{
+		n = n / 10;
+		i++;
+	}
+	return (i);
+}
+
+static char	*copy(char *str, int n, int size)
+{
+	int i;
+
+	i = 0;
+	if (n < 0)
+	{
+		n = -n;
+		str[0] = '-';
+	}
+	str[size] = '\0';
+	while (n > 0)
+	{
+		str[--size] = n % 10 + 48;
+		n = n / 10;
+	}
+	return (str);
+}
+
+char		*ft_itoa(int n)
+{
+	char	*str;
+	int		i;
+
+	if (n == 0)
+	{
+		str = (char *)malloc(sizeof(char) * 2);
+		if (!str)
+			return (0);
+		ft_strcpy(str, "0");
+		return (str);
+	}
+	else if (n == -2147483648)
+	{
+		str = (char *)malloc(sizeof(char) * 12);
+		if (!str)
+			return (0);
+		ft_strcpy(str, "-2147483648");
+		return (str);
+	}
+	i = count(n);
+	str = (char *)malloc(sizeof(char) * (i + 1));
+	if (!str)
+		return (0);
+	return (copy(str, n, i));
 }

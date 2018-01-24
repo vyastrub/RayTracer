@@ -10,17 +10,18 @@ FLAGS_MLX = -lmlx -framework OpenGl -framework AppKit
 LOCAL = -I minilibX -g -L minilibX
 BINS = $(SRCS:.c=.o)
 all: $(NAME)
+lib:
+	make -C libft/
 libclean:
 	make -C libft/ clean
 libfclean:
 	make -C libft/ fclean
 $(NAME): $(BINS)
-	make -C libft/
 	gcc -o $(NAME) $(BINS) $(FLAGS) $(LOCAL) $(FLAGS_MLX) $(LIB)
 %.o: %.c
 	gcc $(FLAGS) -c -o $@ $<
-clean: libclean
+clean:
 	/bin/rm -f $(BINS)
-fclean: libfclean clean
+fclean: clean
 	/bin/rm -f $(NAME)
 re: fclean all

@@ -3,33 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggrybova <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vyastrub <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/02 10:17:13 by ggrybova          #+#    #+#             */
-/*   Updated: 2016/12/02 10:27:17 by ggrybova         ###   ########.fr       */
+/*   Created: 2016/10/31 16:47:27 by vyastrub          #+#    #+#             */
+/*   Updated: 2016/12/02 14:24:41 by vyastrub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <string.h>
 
 int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	unsigned	char	*a;
-	unsigned	char	*b;
-	int					i;
+	int				i;
+	unsigned char	*str1;
+	unsigned char	*str2;
 
 	i = 0;
-	a = (unsigned char*)s1;
-	b = (unsigned char*)s2;
-	if (a[i] == '\0')
-		return (0 - b[i]);
-	if (b[i] == '\0')
-		return (a[i] - 0);
-	while ((a[i] || b[i]) && n-- > 0)
-	{
-		if (a[i] != b[i])
-			return (a[i] - b[i]);
+	str1 = (unsigned char*)s1;
+	str2 = (unsigned char*)s2;
+	if (n == 0)
+		return (0);
+	while (str1[i] && str1[i] == str2[i] && --n > 0)
 		i++;
-	}
+	if (str1[i] != str2[i])
+		return (str1[i] - str2[i]);
 	return (0);
 }

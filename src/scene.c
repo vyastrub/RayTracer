@@ -116,31 +116,3 @@ t_obj		**new_obj(int c, t_arr *gl, int fl)
 	return (obj);
 }
 
-void		print_obj(t_obj *obj)
-{
-	if (obj->flag == 1)
-		printf("--plane[%d]-------\n", obj->index);
-	if (obj->flag == 2)
-		printf("--sphere[%d]-------\n", obj->index);
-	if (obj->flag == 3)
-		printf("--cylinder[%d]-------\n", obj->index);
-	if (obj->flag == 4)
-		printf("--cone[%d]-------\n", obj->index);
-	if (obj->flag == 5)
-		printf("--torus[%d]-------\n", obj->index);
-	if (obj->flag == 6)
-		printf("--disk[%d]-------\n", obj->index);
-	printf("c  \t%f, %f, %f\n", obj->c->x, obj->c->y, obj->c->z);
-	printf("dir\t%f, %f, %f\n", obj->v->x, obj->v->y, obj->v->z);
-	printf("r_1\t%f\n", obj->r);
-	printf("r_2\t%f\n", obj->r2);
-	printf("h\t%f\n", obj->h);
-	printf("k\t%f\n", obj->k);
-	printf("cap\t%d\n", obj->cap);
-	printf("col\t%d, %d, %d\n", obj->color->r, obj->color->g, obj->color->b);
-	printf("diff\t%f\n", obj->diffuse);
-	printf("spec\t%f\n", obj->specular);
-	printf("refl\t%f\n", obj->reflection);
-	printf("refr\t%f\n", obj->refraction);
-}
-

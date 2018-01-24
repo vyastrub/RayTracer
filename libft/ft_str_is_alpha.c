@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vyastrub <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 11:57:52 by vyastrub          #+#    #+#             */
-/*   Updated: 2016/11/28 18:39:28 by vyastrub         ###   ########.fr       */
+/*   Updated: 2016/12/09 15:58:32 by vyastrub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_tolower(int c)
+int		ft_str_is_alpha(char *str)
 {
-	if (c > 64 && c < 91)
-		return (c = c + 32);
-	return (c);
+	if (*str == '\0')
+		return (1);
+	while (*str)
+	{
+		if (*str >= 0 && *str <= 64)
+			return (0);
+		else if (*str >= 91 && *str <= 96)
+			return (0);
+		else if (*str >= 123 && *str <= 127)
+			return (0);
+		str++;
+	}
+	return (1);
 }

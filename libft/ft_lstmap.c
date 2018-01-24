@@ -3,26 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggrybova <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vyastrub <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/12 14:26:28 by ggrybova          #+#    #+#             */
-/*   Updated: 2016/12/15 13:57:37 by ggrybova         ###   ########.fr       */
+/*   Created: 2016/12/09 12:37:05 by vyastrub          #+#    #+#             */
+/*   Updated: 2016/12/09 13:49:38 by vyastrub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	t_list	*new;
+	t_list	*tmp;
+	t_list	*begin;
 
-	new = NULL;
-	if (lst)
+	if (!(lst && f))
+		return (0);
+	tmp = f(lst);
+	begin = tmp;
+	lst = lst->next;
+	while (lst)
 	{
-		new = (*f)(lst);
-		if (!new)
-			return (NULL);
-		new->next = ft_lstmap(lst->next, f);
+		tmp->next = f(lst);
+		lst = lst->next;
+		tmp = tmp->next;
 	}
-	return (new);
+	return (begin);
 }

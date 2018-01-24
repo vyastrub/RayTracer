@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_str_is_numeric.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vyastrub <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/01 11:57:52 by vyastrub          #+#    #+#             */
-/*   Updated: 2016/11/28 18:39:28 by vyastrub         ###   ########.fr       */
+/*   Created: 2016/11/01 12:01:47 by vyastrub          #+#    #+#             */
+/*   Updated: 2016/12/09 15:59:49 by vyastrub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_tolower(int c)
+int		ft_str_is_numeric(char *str)
 {
-	if (c > 64 && c < 91)
-		return (c = c + 32);
-	return (c);
+	if (*str == '\0')
+		return (1);
+	while (*str)
+	{
+		if ((*str >= 0 && *str <= 47) || (*str >= 58 && *str <= 127))
+			return (0);
+		str++;
+	}
+	return (1);
 }

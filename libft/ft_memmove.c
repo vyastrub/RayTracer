@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_memove.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggrybova <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vyastrub <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 09:42:40 by ggrybova          #+#    #+#             */
-/*   Updated: 2016/11/28 14:51:04 by ggrybova         ###   ########.fr       */
+/*   Created: 2016/12/01 13:31:07 by vyastrub          #+#    #+#             */
+/*   Updated: 2016/12/01 19:18:47 by vyastrub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <string.h>
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void	*ft_memmove(void *dest, const void *src, size_t len)
 {
-	unsigned char	*a;
-	unsigned char	*b;
+	size_t	i;
+	char	*d;
+	char	*s;
 
-	a = (unsigned char*)dst;
-	b = (unsigned char*)src;
-	if (dst < src)
-	{
-		while (len--)
-			*a++ = *b++;
-		return (dst);
-	}
-	while (len--)
-		*(a + len) = *(b + len);
-	return (dst);
+	d = (char*)dest;
+	s = (char*)src;
+	i = -1;
+	if (s > d)
+		while (++i < len)
+			d[i] = s[i];
+	else
+		while (++i != len)
+			d[len - i - 1] = s[len - i - 1];
+	return (dest);
 }

@@ -3,91 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggrybova <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vyastrub <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/06 14:08:54 by ggrybova          #+#    #+#             */
-/*   Updated: 2016/12/15 14:56:12 by ggrybova         ###   ########.fr       */
+/*   Created: 2016/12/05 12:54:05 by vyastrub          #+#    #+#             */
+/*   Updated: 2016/12/06 15:21:17 by vyastrub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
-char			*ft_strncpy2(char *dst, const char *src, size_t len)
-{
-	size_t	i;
-	size_t	sl;
-
-	if (len > 0)
-	{
-		sl = ft_strlen(src);
-		i = -1;
-		while (++i < len)
-			if (i < sl)
-				dst[i] = src[i];
-			else
-				dst[i] = '\0';
-		dst[i] = '\0';
-	}
-	return (dst);
-}
-
-static	int		ft_space_begin(char const *str)
-{
-	int		i;
-
-	i = 0;
-	while (*str && (*str == '\t' || *str == ' ' || *str == '\n'))
-	{
-		i++;
-		str++;
-	}
-	return (i);
-}
-
-static	int		ft_space_end(char const *str)
-{
-	int		i;
-	int		j;
-
-	i = 0;
-	j = ft_space_begin(str);
-	if (j == (int)ft_strlen(str))
-		return (i - ft_strlen(str));
-	while (*str)
-		str++;
-	str--;
-	while (*str == '\t' || *str == ' ' || *str == '\n')
-	{
-		i++;
-		str--;
-	}
-	return (i);
-}
-
-char			*ft_strtrim(char const *s)
+char	*ft_strtrim(char const *s)
 {
 	char	*str;
 	int		i;
 	int		j;
-	int		k;
+	int		x;
 
 	if (!s)
-		return (NULL);
-	k = ft_strlen(s);
-	i = ft_space_begin(s);
-	j = ft_space_end(s);
-	str = (char *)malloc(k - i - j + 1);
+		return (0);
+	i = 0;
+	j = 0;
+	while (s[i] != '\0')
+		i++;
+	while (s[i - 1] == ' ' || s[i - 1] == '\n' || s[i - 1] == '\t')
+		i--;
+	while ((s[j] == ' ' || s[j] == '\n' || s[j] == '\t') && j < i)
+		j++;
+	str = (char *)malloc(sizeof(char) * (i - j + 1));
 	if (!str)
-		return (NULL);
-	if (i == k)
-	{
-		str[0] = '\0';
-		return (str);
-	}
-	if (i == 0 && j == 0)
-		return (ft_strcpy(str, s));
-	if (i != 0)
-		return (ft_strncpy2(str, s + i, k - j - i));
-	else
-		return (ft_strncpy2(str, s, k - j));
+		return (0);
+	x = 0;
+	while (j < i)
+		str[x++] = s[j++];
+	str[x] = '\0';
+	return (str);
 }

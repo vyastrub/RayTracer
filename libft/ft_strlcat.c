@@ -1,42 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggrybova <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vyastrub <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/25 11:28:46 by ggrybova          #+#    #+#             */
-/*   Updated: 2016/12/17 15:57:31 by ggrybova         ###   ########.fr       */
+/*   Created: 2016/11/01 21:20:50 by vyastrub          #+#    #+#             */
+/*   Updated: 2016/12/01 19:30:42 by vyastrub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <string.h>
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+size_t		ft_strlcat(char *restrict dest, const char *restrict src, size_t n)
 {
-	char		*dest;
-	const char	*source;
-	size_t		n;
-	size_t		len;
+	size_t i;
+	size_t j;
+	size_t l;
 
-	dest = dst;
-	source = src;
-	n = size;
-	while (n-- != 0 && *dest != '\0')
-		dest++;
-	len = dest - dst;
-	n = size - len;
-	if (n == 0)
-		return (len + ft_strlen(source));
-	while (*source != '\0')
-	{
-		if (n != 1)
-		{
-			*dest++ = *source;
-			n--;
-		}
-		source++;
-	}
-	*dest = '\0';
-	return (len + (source - src));
+	i = -1;
+	while (dest[++i] && n > 0)
+		n--;
+	l = 0;
+	while (src[l])
+		l++;
+	if (n-- < 2)
+		return (i + l);
+	j = -1;
+	while (src[++j] && n-- > 0)
+		dest[i + j] = src[j];
+	dest[i + j] = '\0';
+	return (i + l);
 }

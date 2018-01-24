@@ -1,42 +1,65 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsplit.c                                      :+:      :+:    :+:   */
+/*   my_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggrybova <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vyastrub <vyastrub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/06 15:11:42 by ggrybova          #+#    #+#             */
-/*   Updated: 2017/08/16 15:25:15 by ggrybova         ###   ########.fr       */
+/*   Created: 2017/06/15 13:17:13 by vyastrub          #+#    #+#             */
+/*   Updated: 2017/09/26 11:29:34 by vyastrub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
-char	**ft_strsplit(char const *s, char c)
+static int	count(char const *str, char c, int i, int w)
 {
-	char	**a;
+	while (str[i] != '\0')
+	{
+		while (str[i] == c)
+			i++;
+		if (str[i] != '\0')
+			w++;
+		while (str[i] != '\0' && str[i] != c)
+			i++;
+	}
+	return (w);
+}
+
+static char	*copy(char const *str, char c, int i, int j)
+{
+	char	*temp;
+	int		l;
+
+	l = 0;
+	while (str[i] != '\0' && str[i] != c)
+		i++;
+	temp = (char*)malloc(sizeof(char) * (i - j + 1));
+	while (str[j] != '\0' && str[j] != c)
+		temp[l++] = str[j++];
+	temp[l] = '\0';
+	return (temp);
+}
+
+char		**my_split(char const *str, char c)
+{
+	int		w;
 	int		i;
 	int		j;
-	int		end;
+	char	**arr;
 
-	if (!s)
-		return (NULL);
-	i = -1;
+	w = count(str, c, 0, 0);
+	arr = (char**)malloc(sizeof(char*) * (w + 1));
+	i = 0;
 	j = 0;
-	while (s[++i])
-		if (s[i] != c && (s[i + 1] == '\0' || s[i + 1] == c))
-			j++;
-	if ((a = (char**)malloc(sizeof(char*) * j + 1)) == 0)
-		return (NULL);
-	a[j--] = NULL;
-	end = i;
-	while (i--)
+	while (str[j] && i < w)
 	{
-		if (s[i] != c && s[i + 1] == c)
-			end = i;
-		if (s[i] != c && (s[i - 1] == c || i == 0))
-			if ((a[j--] = ft_strsub(s, (unsigned int)i, end - i + 1)) == 0)
-				return (NULL);
+		while (str[j] == c)
+			++j;
+		arr[i++] = copy(str, c, j, j);
+		while (str[j] != '\0' && str[j] != c)
+			j++;
 	}
-	return (a);
+	arr[i] = 0;
+	return (arr);
 }

@@ -3,40 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggrybova <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vyastrub <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/02 10:32:29 by ggrybova          #+#    #+#             */
-/*   Updated: 2016/12/02 12:27:46 by ggrybova         ###   ########.fr       */
+/*   Created: 2016/10/31 09:01:12 by vyastrub          #+#    #+#             */
+/*   Updated: 2016/12/08 13:47:59 by vyastrub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
 int		ft_atoi(const char *str)
 {
-	unsigned	char	*a;
-	int					sign;
-	int					r;
+	long int	n;
+	int			sign;
 
-	a = (unsigned char*)str;
-	r = 0;
-	sign = 0;
-	while (*a == '\t' || *a == '\n' || *a == '\v' || *a == '\f' ||
-			*a == '\r' || *a == ' ')
-		a++;
-	if (*a == '-')
+	n = 0;
+	while (*str == 32 || (*str >= 9 && *str <= 13))
+		str++;
+	if (*str == '-')
 	{
-		sign = 1;
-		a++;
+		sign = -1;
+		str++;
 	}
-	else if (*a == '+')
-		a++;
-	while (*a > 47 && *a < 58)
-	{
-		r = r * 10 + ((int)*a - '0');
-		a++;
-	}
-	if (sign == 1)
-		return (-r);
-	return (r);
+	else if (*str == '+')
+		str++;
+	while (*str >= '0' && *str <= '9')
+		n = n * 10 + *str++ - '0';
+	if (sign < 0)
+		n = n * sign;
+	return ((int)n);
 }
